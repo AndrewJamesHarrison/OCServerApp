@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Core" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authorization.Policy" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.Internal" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
   </ItemGroup>
