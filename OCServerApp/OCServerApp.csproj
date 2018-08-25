@@ -21,6 +21,7 @@
     <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
   </ItemGroup>
