@@ -12,18 +12,26 @@ export class FetchData extends Component {
         .then(data => {
             console.log(data.properties);
         this.setState({ forecasts: data, loading: false });
-      });
+          });
+
+      //this.simpleInputHandler = this.simpleInputHandler.bind(this);
     }
 
-  static renderForecastsTable(forecasts) {
+    simpleInputHandler(e, i) {
+        this.setState({
+            [this.forecasts.properties[i].value]: e.target.value
+        });
+    }
+
+  static renderForecastsTable(forecasts, inputHandler) {
       return (
           <div>
               <h2>{forecasts.name}</h2>
               <div>
-                  {forecasts.properties.map(p =>
+                  {forecasts.properties.map((p, i) =>
                       <div class="form">
                           <p>{p.name}</p>
-                          <input type={p.display} value={p.value}/>
+                          <input type={p.display} value={p.value} onChange={e => inputHandler(e, i)}/>
                       </div>
                   )}
               </div>
@@ -34,7 +42,7 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+        : FetchData.renderForecastsTable(this.state.forecasts, this.simpleInputHandler);
 
     return (
       <div>
