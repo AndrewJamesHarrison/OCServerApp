@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using OCServerApp.Models;
 
 namespace OCServerApp.Controllers
 {
@@ -30,24 +31,6 @@ namespace OCServerApp.Controllers
             return new JsonResult(g);
         }
 
-        public class Group
-        {
-            public string Name { get; set; }
-            public List<Property> Properties { get; set; }
-        }
 
-        public class Property
-        {
-            public string Name { get; set; }
-            public string Value { get; set; }
-            public string Display => DisplayType.ToString();
-            public DisplayTypeEnum DisplayType {get; set;}
-        }
-
-        public enum DisplayTypeEnum
-        {
-            Number,
-            String
-        }
     }
 }

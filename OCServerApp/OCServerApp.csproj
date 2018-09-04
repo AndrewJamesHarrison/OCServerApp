@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Abstractions" Version="2.1.1" />
@@ -26,6 +27,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.yaml" CopyToOutputDirectory="PreserveNewest" />
@@ -35,6 +37,10 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Templates\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
