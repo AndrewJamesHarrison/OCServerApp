@@ -14,7 +14,7 @@ export class Property extends Component {
 
     render() {
         return (
-            <div class="form">
+            <div class="form container row">
                 <p>{this.props.pName}</p>
                 <input type={this.props.pDisplay} value={this.state.value} onChange={e => this.simpleInputHandler(e)} />
             </div>

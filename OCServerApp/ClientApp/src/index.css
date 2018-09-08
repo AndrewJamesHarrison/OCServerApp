@@ -3,4 +3,14 @@
     body {
         padding-top: 50px;
     }
+    .container {
+        display: flex; /* or inline-flex */
+        justify-content: center;
+    }
+    .row {
+        flex-direction: row;
+    }
+    .column {
+        flex-direction: column;
+    }
 }
