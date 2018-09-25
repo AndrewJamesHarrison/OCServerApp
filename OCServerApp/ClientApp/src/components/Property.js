@@ -4,19 +4,18 @@ export class Property extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { value: props.pValue };
-        console.log("constructor: ");
-        console.log(this);
-        this.simpleInputHandler = this.simpleInputHandler.bind(this);
+        //this.changeHandler = this.changeHandler.bind(this);
     }
 
-    simpleInputHandler = e => this.setState({ value: e.target.value });
+    //changeHandler(e) {
+    //    this.props.onChangeHandler(e.target.value);
+    //}
 
     render() {
         return (
             <div class="form container row">
                 <p>{this.props.pName}</p>
-                <input type={this.props.pDisplay} value={this.state.value} onChange={e => this.simpleInputHandler(e)} />
+                <input type={this.props.pDisplay} value={this.props.pValue} />
             </div>
         );
     }

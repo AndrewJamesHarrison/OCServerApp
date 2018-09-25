@@ -7,13 +7,9 @@ export class FetchData extends Component {
   constructor(props) {
     super(props);
       this.state = { viewPorts: undefined, currentPage: 1, totalPages: 1, loading: true };
-      this.pageChangeHandler = this.pageChangeHandler.bind(this);
-    //fetch('api/SampleData/GetGroups')
-    //  .then(response => response.json())
-    //    .then(data => {
-    //    this.setState({ forecasts: data, loading: false });
-    //      });
-
+      this.buttonPageChangeHandler = this.buttonPageChangeHandler.bind(this);
+      this.inputPageChangeHandler = this.inputPageChangeHandler.bind(this);
+      this.simpleChangeHandler = this.simpleChangeHandler.bind(this);
       fetch('api/SampleData/GetViewPorts')
           .then(response => response.json())
           .then(data => {
@@ -21,21 +17,38 @@ export class FetchData extends Component {
           });
     }
 
-    pageChangeHandler = (e) => this.setState({ currentPage: (e) });
+    simpleChangeHandler(e) {
+        //let viewPorts = [...this.state.viewPorts];
+        //viewPorts[e.target.viewPortIndex].groups[e.target.groupIndex].properties[e.target.propertyIndex] = e.target.value;
+        //this.setState({ viewPorts: viewPorts });
+    };
+
+    buttonPageChangeHandler = (e) => this.setState({ currentPage: (e) });
+
+    inputPageChangeHandler = (e) => {
+        var i = parseInt(e.target.value);
+        if (!isNaN(i)) {
+            this.setState({ currentPage: (i) })
+        }
+    };
 
     static renderViewPort(viewPorts, page) {
       return (
           <div class="container column">
-              {viewPorts[page].groups.map((group) =>
+              {
+                  viewPorts[page].groups.map((group, groupIndex) => 
                   <div class="container">
                       <h2>{group.name}</h2>
                       <div class="container column">
-                      {group.properties.map((p) =>
-                          <Property pName={p.name} pValue={p.value} pDisplay={p.display} />
-                          )}
-                          </div>
+                          {
+                              group.properties.map((p, propertyIndex) =>
+                                  <Property pName={p.name} pValue={p.value} pDisplay={p.display}/>
+                              )
+                          }
+                      </div>
                   </div>
-                  )}
+                )
+              }
           </div>
     );
   }
@@ -48,9 +61,9 @@ export class FetchData extends Component {
     return (
         <div class="container row">
             <div class="container">
-                <button name="PreviousPage" onClick={e => this.pageChangeHandler(this.state.currentPage - 1)} disabled={this.state.currentPage <= 1}> Previous </button>
-                <input type="number" value={this.state.currentPage} onChange={e => this.pageChangeHandler(e.target.value)} max={this.state.totalPages} min={1}/>
-                <button name="NextPage" onClick={e => this.pageChangeHandler(this.state.currentPage + 1)} disabled={this.state.currentPage >= this.state.totalPages}> Next </button>
+                <button name="PreviousPage" onClick={e => this.buttonPageChangeHandler(this.state.currentPage - 1)} disabled={this.state.currentPage <= 1}> Previous </button>
+                <input type="number" value={this.state.currentPage} onChange={e => this.inputPageChangeHandler(e)} max={this.state.totalPages} min={1}/>
+                <button name="NextPage" onClick={e => this.buttonPageChangeHandler(this.state.currentPage + 1)} disabled={this.state.currentPage >= this.state.totalPages}> Next </button>
                 <p>Page {this.state.currentPage} of {this.state.totalPages}</p>
             </div>
             <div>

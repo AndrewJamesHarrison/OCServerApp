@@ -25,8 +25,8 @@ namespace OCServerApp.Controllers
                             {
                                 new Property(){Name = "Name", DisplayType=DisplayTypeEnum.String, Value="-Name-"},
                                 new Property(){Name = "Class", DisplayType=DisplayTypeEnum.String, Value="-Class-"},
-                                new Property(){Name = "Race", DisplayType=DisplayTypeEnum.Number, Value="-Race-"},
-                                new Property(){Name = "Description", DisplayType=DisplayTypeEnum.Number, Value="-Description-"},
+                                new Property(){Name = "Race", DisplayType=DisplayTypeEnum.String, Value="-Race-"},
+                                new Property(){Name = "Description", DisplayType=DisplayTypeEnum.String, Value="-Description-"},
                             }
                         }
                     }
